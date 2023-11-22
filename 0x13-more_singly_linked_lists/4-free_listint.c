@@ -1,18 +1,18 @@
-#!/usr/bin/node
-module.exports = class Rectangle {
-  constructor (w, h) {
-    if (w > 0 && h > 0) { [this.width, this.height] = [w, h]; }
-  }
+#include "lists.h"
 
-  print () {
-    for (let i = 0; i < this.height; i++) console.log('X'.repeat(this.width));
-  }
+/**
+ * free_listint - frees a linked list
+ * @head: head of a list.
+ *
+ * Return: no return.
+ */
+void free_listint(listint_t *head)
+{
+	listint_t *temp;
 
-  rotate () {
-    [this.width, this.height] = [this.height, this.width];
-  }
-
-  double () {
-    [this.width, this.height] = [this.width * 2, this.height * 2];
-  }
-};
+	while ((temp = head) != NULL)
+	{
+		head = head->next;
+		free(temp);
+	}
+}
